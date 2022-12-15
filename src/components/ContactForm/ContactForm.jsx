@@ -30,17 +30,17 @@ const ContactForm = () => {
 
     const addContact = async e => {
         e.preventDefault();
-        const isNameAdded = name.toUpperCase();
+        // const isNameAdded = name.toUpperCase();
 
-        const isAdded = contacts.find(el => {
-            return (el.name.toUpperCase() === isNameAdded);
-        });
+        // const isAdded = contacts.find(el => {
+        //     return (el.name.toUpperCase() === isNameAdded);
+        // });
 
-        if (isAdded) {
-            setName('');
-            setContacts('');
-            return alert(`${name} is already in contacts`);
-        }
+        // if (isAdded) {
+        //     setName('');
+        //     setContacts('');
+        //     return alert(`${name} is already in contacts`);
+        // }
 
         const contact = {
             id: nanoid(),
