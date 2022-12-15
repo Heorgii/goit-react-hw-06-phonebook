@@ -5,9 +5,9 @@ import Notification from 'components/Notification/Notification';
 import { useState } from 'react';
 
 const ContactList = () => {
-    const filter = useSelector(state => state); //.filter.value
+    const filter = useSelector(state => state.filter); //.filter.value
     console.log(filter);
-    const [contacts] = useState()
+    const [contacts] = useState();
 
     const getContacts = () => {
         const isAddedFilter = filter.toLowerCase();
@@ -16,8 +16,6 @@ const ContactList = () => {
             contact.name.toLowerCase().includes(isAddedFilter)
         );
     };
-
-    // const getCnt = getContacts();
 
     return (
         <div className={css.list_box}>
