@@ -2,7 +2,7 @@ import { nanoid } from 'nanoid';
 import { useEffect, useState } from 'react';
 import css from './ContactForm.module.css';
 
-const ContactForm = () => {
+const ContactForm = ({ onSubmit }) => {
 
     const [name, setName] = useState('');
     const [number, setNumber] = useState('');
@@ -30,16 +30,17 @@ const ContactForm = () => {
 
     const addContact = async e => {
         e.preventDefault();
+
         // const isNameAdded = name.toUpperCase();
 
         // const isAdded = contacts.find(el => {
-        //     return (el.name.toUpperCase() === isNameAdded);
+        //   return (el.name.toUpperCase() === isNameAdded);
         // });
 
         // if (isAdded) {
-        //     setName('');
-        //     setContacts('');
-        //     return alert(`${name} is already in contacts`);
+        //   setName('');
+        //   setContacts('');
+        //   return alert(`${name} is already in contacts`);
         // }
 
         const contact = {
@@ -48,8 +49,13 @@ const ContactForm = () => {
             number: number,
         };
 
+        onSubmit(contact);
+
         setContacts(prevContacts => [...prevContacts, contact]);
         console.log(contact);
+
+        setName('');
+        setNumber('');
     }
 
     return (

@@ -1,24 +1,20 @@
 import css from './ContactList.module.css';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import Notification from 'components/Notification/Notification';
 import { useState } from 'react';
+import { deleteItems } from 'redux/contactSlice';
 
 const ContactList = () => {
     const filter = useSelector(state => state.filter); //.filter.value
     console.log(filter);
-    const [contacts, setContacts] = useState();
+    const [contacts] = useState();//setContacts
+    const dispatch = useDispatch();
 
     const getContacts = () => {
         const isAddedFilter = filter.toLowerCase();
 
         return contacts.filter(contact =>
             contact.name.toLowerCase().includes(isAddedFilter)
-        );
-    };
-
-    const deleteContact = e => {
-        setContacts(prevState =>
-            prevState.filter(contact => contact.id !== e),
         );
     };
 
@@ -30,7 +26,7 @@ const ContactList = () => {
                         <li key={id} className={css.item}>
                             <p className={css.contact_name}>{name} ------------ {number}</p>
 
-                            <button className={css.btn_delete_contact} type='submit' onClick={() => deleteContact(id)}>Delete</button>
+                            <button className={css.btn_delete_contact} type='submit' onClick={() => dispatch(deleteItems(id))}>Delete</button>
                         </li>
                     ))
                 ) : (

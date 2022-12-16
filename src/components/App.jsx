@@ -2,12 +2,38 @@ import ContactForm from "./ContactForm/ContactForm";
 import ContactList from "./ContactList/ContactList";
 import Filter from "./Filter/Filter";
 import css from './App.module.css';
+import { useDispatch, useSelector } from "react-redux";
+import { createItems } from "redux/contactSlice";
 
 const App = () => {
+
+  const dispatch = useDispatch();
+  const contacts = useSelector( state => state.contacts.items);
+  console.log(contacts);
+
+  const handleAddContact = newContact => {
+    const contactsName = contacts.some(el => newContact.name === el.name);
+
+    contactsName
+      ? alert(`${newContact.name} is already in contacts.`)
+      : dispatch(createItems(newContact));
+
+    // const isNameAdded = newContact.name.toUpperCase();
+
+    // const isAdded = contacts.find(el => {
+    //   return (el.name.toUpperCase() === isNameAdded);
+    // });
+
+    // isAdded
+    //   ? alert(`${newContact.name} is already in contacts.`)
+    // : dispatch(createItems(newContact));
+
+  };
+
   return (
     <div>
       <h1 className={css.title}>Phonebook</h1>
-      <ContactForm />
+      <ContactForm onSubmit={handleAddContact} />
       <h2 className={css.contact_title}>Contacts</h2>
       <Filter />
       <ContactList />
