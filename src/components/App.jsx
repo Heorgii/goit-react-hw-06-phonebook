@@ -8,7 +8,7 @@ import { createItems } from "redux/contactSlice";
 const App = () => {
 
   const dispatch = useDispatch();
-  const contacts = useSelector( state => state.contacts.items);
+  const contacts = useSelector( state => state.items);
   console.log(contacts);
 
   const handleAddContact = newContact => {
