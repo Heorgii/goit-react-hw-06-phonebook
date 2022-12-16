@@ -21,3 +21,25 @@
     width: 400px;
 }
 
+.item {
+    display: flex;
+    align-items: center;
+}
+
+.contact_name {
+    margin-right: 15px;
+    color: #fff;
+}
+
+.btn_delete_contact {
+    border-color: transparent;
+    border-radius: 20px;
+    background-color: #0060af;
+    color: #fff;
+    cursor: pointer;
+}
+
+.btn_delete_contact:hover {
+    background-color: #0890ff;
+}
+

@@ -49,6 +49,7 @@ const ContactForm = () => {
         };
 
         setContacts(prevContacts => [...prevContacts, contact]);
+        console.log(contact);
     }
 
     return (

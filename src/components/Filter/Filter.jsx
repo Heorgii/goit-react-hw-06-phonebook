@@ -15,7 +15,7 @@ const Filter = () => {
         <div className={css.filter_box}>
             <label>
                 <span className={css.filter_tittle}>Find contacts by name</span>
-                <input type="name" value={filter} onChange={filterChange}
+                <input type="name"  onChange={filterChange} //value={filter}
                     className={css.filter_input}
                 />
             </label>

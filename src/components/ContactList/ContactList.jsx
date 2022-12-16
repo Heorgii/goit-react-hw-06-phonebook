@@ -1,13 +1,12 @@
 import css from './ContactList.module.css';
 import { useSelector } from 'react-redux';
-import ContactItem from 'components/ContactItem/ContactItem';
 import Notification from 'components/Notification/Notification';
 import { useState } from 'react';
 
 const ContactList = () => {
     const filter = useSelector(state => state.filter); //.filter.value
     console.log(filter);
-    const [contacts] = useState();
+    const [contacts, setContacts] = useState();
 
     const getContacts = () => {
         const isAddedFilter = filter.toLowerCase();
@@ -17,17 +16,22 @@ const ContactList = () => {
         );
     };
 
+    const deleteContact = e => {
+        setContacts(prevState =>
+            prevState.filter(contact => contact.id !== e),
+        );
+    };
+
     return (
         <div className={css.list_box}>
             <ul className={css.list}>
                 {getContacts.length > 0 ? (
                     getContacts.map(({ id, name, number }) => (
-                        <ContactItem
-                            key={id}
-                            id={id}
-                            name={name}
-                            number={number}
-                        />
+                        <li key={id} className={css.item}>
+                            <p className={css.contact_name}>{name} ------------ {number}</p>
+
+                            <button className={css.btn_delete_contact} type='submit' onClick={() => deleteContact(id)}>Delete</button>
+                        </li>
                     ))
                 ) : (
                     <Notification message="Contact list is empty" />
