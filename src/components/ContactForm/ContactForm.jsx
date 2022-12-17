@@ -6,6 +6,7 @@ const ContactForm = ({ onSubmit }) => {
 
     const [name, setName] = useState('');
     const [number, setNumber] = useState('');
+
     const [contacts, setContacts] = useState(
         JSON.parse(localStorage.getItem('contacts')) ?? []
     );
@@ -31,18 +32,6 @@ const ContactForm = ({ onSubmit }) => {
     const addContact = async e => {
         e.preventDefault();
 
-        // const isNameAdded = name.toUpperCase();
-
-        // const isAdded = contacts.find(el => {
-        //   return (el.name.toUpperCase() === isNameAdded);
-        // });
-
-        // if (isAdded) {
-        //   setName('');
-        //   setContacts('');
-        //   return alert(`${name} is already in contacts`);
-        // }
-
         const contact = {
             id: nanoid(),
             name: name,
@@ -51,8 +40,7 @@ const ContactForm = ({ onSubmit }) => {
 
         onSubmit(contact);
 
-        // setContacts(prevContacts => [...prevContacts, contact]);
-        // console.log(contact);
+        setContacts(prevContacts => [...prevContacts, contact]);
 
         setName('');
         setNumber('');

@@ -7,6 +7,7 @@ const initialState = {
         { id: 'id-3', name: 'Eden Clements', number: '645-17-79' },
         { id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },
     ],
+    filterInput: '',
 };
 
 export const contactSlice = createSlice({
@@ -15,7 +16,6 @@ export const contactSlice = createSlice({
     reducers: {
         createItems(state, action) {
             state.items = [...state.items, action.payload];
-            // state.items.push(action.payload);
             console.log(state);
         },
 
@@ -23,8 +23,12 @@ export const contactSlice = createSlice({
             state.items = state.items.filter(el => el.id !== action.payload);
         },
 
+        filterItems(state, action) {
+            state.filterInput = action.payload;
+        },
+
     },
 });
 
-export const { createItems, deleteItems } = contactSlice.actions;
+export const { createItems, deleteItems, filterItems } = contactSlice.actions;
 export default contactSlice.reducer;

@@ -11,25 +11,18 @@ const App = () => {
   const dispatch = useDispatch();
   const contacts = useSelector(getContacts);
   console.log(contacts);
-
   const handleAddContact = newContact => {
-    const contactsName = contacts.some(el => newContact.name === el.name);
 
-    contactsName
+    const isNameAdded = newContact.name.toUpperCase();
+
+    const isAdded = contacts.find(el => {
+      return (el.name.toUpperCase() === isNameAdded);
+    });
+ 
+
+    isAdded
       ? alert(`${newContact.name} is already in contacts.`)
       : dispatch(createItems(newContact));
-
-    // const isNameAdded = newContact.name.toUpperCase();
-
-    // const isAdded = contact.find(el => {
-    //   return (el.name.toUpperCase() === isNameAdded);
-    // });
-    // console.log(contact);
-
-    // isAdded
-    //   ? alert(`${newContact.name} is already in contacts.`)
-    //   : dispatch(createItems(newContact));
-
   };
 
   return (
