@@ -7,13 +7,13 @@ const ContactForm = ({ onSubmit }) => {
     const [name, setName] = useState('');
     const [number, setNumber] = useState('');
 
-    const [contacts, setContacts] = useState(
-        JSON.parse(localStorage.getItem('contacts')) ?? []
-    );
+    // const [contacts, setContacts] = useState(
+    //     JSON.parse(localStorage.getItem('contacts')) ?? []
+    // );
 
-    useEffect(() => {
-        localStorage.setItem('contacts', JSON.stringify(contacts));
-    }, [contacts]);
+    // useEffect(() => {
+    //     localStorage.setItem('contacts', JSON.stringify(contacts));
+    // }, [contacts]);
 
     const handleChange = e => {
         const prop = e.currentTarget.name;
@@ -40,7 +40,7 @@ const ContactForm = ({ onSubmit }) => {
 
         onSubmit(contact);
 
-        setContacts(prevContacts => [...prevContacts, contact]);
+        // setContacts(prevContacts => [...prevContacts, contact]);
 
         setName('');
         setNumber('');

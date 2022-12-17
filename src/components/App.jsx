@@ -11,6 +11,7 @@ const App = () => {
   const dispatch = useDispatch();
   const contacts = useSelector(getContacts);
   console.log(contacts);
+
   const handleAddContact = newContact => {
 
     const isNameAdded = newContact.name.toUpperCase();
@@ -19,7 +20,6 @@ const App = () => {
       return (el.name.toUpperCase() === isNameAdded);
     });
  
-
     isAdded
       ? alert(`${newContact.name} is already in contacts.`)
       : dispatch(createItems(newContact));
