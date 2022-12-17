@@ -51,8 +51,8 @@ const ContactForm = ({ onSubmit }) => {
 
         onSubmit(contact);
 
-        setContacts(prevContacts => [...prevContacts, contact]);
-        console.log(contact);
+        // setContacts(prevContacts => [...prevContacts, contact]);
+        // console.log(contact);
 
         setName('');
         setNumber('');

@@ -10,10 +10,10 @@ const App = () => {
 
   const dispatch = useDispatch();
   const contacts = useSelector(getContacts);
+  console.log(contacts);
 
   const handleAddContact = newContact => {
     const contactsName = contacts.some(el => newContact.name === el.name);
-    console.log(contacts);
 
     contactsName
       ? alert(`${newContact.name} is already in contacts.`)
