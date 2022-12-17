@@ -4,15 +4,16 @@ import Filter from "./Filter/Filter";
 import css from './App.module.css';
 import { useDispatch, useSelector } from "react-redux";
 import { createItems } from "redux/contactSlice";
+import { getContacts } from "redux/selector";
 
 const App = () => {
 
   const dispatch = useDispatch();
-  const contacts = useSelector( state => state.items);
-  console.log(contacts);
+  const contacts = useSelector(getContacts);
 
   const handleAddContact = newContact => {
     const contactsName = contacts.some(el => newContact.name === el.name);
+    console.log(contacts);
 
     contactsName
       ? alert(`${newContact.name} is already in contacts.`)
@@ -20,13 +21,14 @@ const App = () => {
 
     // const isNameAdded = newContact.name.toUpperCase();
 
-    // const isAdded = contacts.find(el => {
+    // const isAdded = contact.find(el => {
     //   return (el.name.toUpperCase() === isNameAdded);
     // });
+    // console.log(contact);
 
     // isAdded
     //   ? alert(`${newContact.name} is already in contacts.`)
-    // : dispatch(createItems(newContact));
+    //   : dispatch(createItems(newContact));
 
   };
 
