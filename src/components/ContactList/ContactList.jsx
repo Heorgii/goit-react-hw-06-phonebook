@@ -2,7 +2,8 @@ import css from './ContactList.module.css';
 import { useDispatch, useSelector } from 'react-redux';
 import Notification from 'components/Notification/Notification';
 import { deleteItems } from 'redux/contactSlice';
-import { getFilter, getContacts } from 'redux/selector';
+import { getContacts } from 'redux/selector';
+import { getFilter } from 'redux/selector';
 
 const ContactList = () => {
     const filterInput = useSelector(getFilter);

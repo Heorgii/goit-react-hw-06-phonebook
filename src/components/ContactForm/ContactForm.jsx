@@ -1,11 +1,16 @@
 import { nanoid } from 'nanoid';
 import { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { createItems } from 'redux/contactSlice';
+import { getContacts } from 'redux/selector';
 import css from './ContactForm.module.css';
 
 const ContactForm = ({ onSubmit }) => {
 
     const [name, setName] = useState('');
     const [number, setNumber] = useState('');
+    const dispatch = useDispatch();
+    const contacts = useSelector(getContacts);
 
     const handleChange = e => {
         const prop = e.currentTarget.name;
@@ -30,13 +35,20 @@ const ContactForm = ({ onSubmit }) => {
             number: number,
         };
 
-        onSubmit(contact);
+        const isNameAdded = contact.name.toUpperCase();
 
-        // setContacts(prevContacts => [...prevContacts, contact]);
+        const isAdded = contacts.find(el => {
+            return (el.name.toUpperCase() === isNameAdded);
+        });
+
+        isAdded
+            ? alert(`${contact.name} is already in contacts.`)
+            : dispatch(createItems(contact));
 
         setName('');
         setNumber('');
     }
+
 
     return (
         <div className={css.form_box}>
